@@ -1207,6 +1207,71 @@ svg.leaflet-image-layer.leaflet-interactive path {
       line-height: 1.5;
     }
 
+    /* Dojo Directory */
+    .dojo-card {
+      min-height: 100%;
+      border-top: 4px solid var(--accent);
+    }
+    .dojo-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--night-blue);
+      margin: 0 0 6px;
+    }
+    .dojo-instructor {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .dojo-details {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .dojo-detail {
+      margin: 0;
+    }
+    .dojo-detail-label {
+      display: block;
+      color: var(--accent-text);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .dojo-detail-value {
+      display: block;
+      color: #2b333c;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      white-space: pre-line;
+    }
+    .dojo-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .dojo-actions a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: #eef4fb;
+      color: var(--accent-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .dojo-actions a:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
     /* About FACERJ Section */
     .about-section {
       background: #ffffff;
@@ -1524,6 +1589,60 @@ svg.leaflet-image-layer.leaflet-interactive path {
       color: #000000;
     }
 
+    /* FACERJ 30 Years Informational Modal */
+    body.modal-open {
+      overflow: hidden;
+    }
+    .anniversary-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(4, 18, 33, 0.82);
+    }
+    .anniversary-modal[hidden] {
+      display: none;
+    }
+    .anniversary-modal-card {
+      position: relative;
+      max-width: min(92vw, 760px);
+      max-height: calc(100vh - 40px);
+      padding: 48px 12px 12px;
+      background: #ffffff;
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+    .anniversary-modal-image {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: calc(100vh - 100px);
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .anniversary-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 7px 14px;
+      background: var(--night-blue);
+      color: #ffffff;
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .anniversary-modal-close:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
     /* Accessible focus */
     a:focus-visible, button:focus-visible {
       outline: 3px solid var(--gold);
@@ -1548,6 +1667,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </style>
 </head>
 <body>
+
+  <!-- Aviso informativo dos 30 anos da FACERJ -->
+  <div class="anniversary-modal" id="anniversary-modal" role="dialog" aria-modal="true" aria-label="30 anos da FACERJ Aikido">
+    <div class="anniversary-modal-card">
+      <button type="button" class="anniversary-modal-close" id="anniversary-modal-close" aria-label="Fechar aviso dos 30 anos da FACERJ">Fechar</button>
+      <img class="anniversary-modal-image" src="30 anos de FACERJ Aikido.png" alt="30 anos da FACERJ Aikido">
+    </div>
+  </div>
 
   <!-- Aviso discreto do site oficial em construção -->
   <aside class="top-notice" aria-label="Aviso institucional">
@@ -1574,6 +1701,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <ul class="nav-links">
           <li><a href="#beneficios">O Aikido</a></li>
           <li><a href="#30anos">30 Anos</a></li>
+          <li><a href="#onde-treinar">Onde mais treinar</a></li>
           <li><a href="#sobre">A FACERJ</a></li>
           <li><a href="#horarios">Horários e Local</a></li>
           <li>
@@ -1668,6 +1796,122 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </section>
 
     <!-- Benefícios e Princípios do Aikido -->
+    <section class="section-wrap" id="onde-treinar" aria-labelledby="onde-treinar-heading">
+      <div class="section-head">
+        <span class="section-kicker">Rede FACERJ</span>
+        <h2 class="section-title" id="onde-treinar-heading">Onde mais treinar</h2>
+        <p class="section-desc">Encontre um dojo da FACERJ e escolha o local mais conveniente para iniciar ou continuar sua prática de Aikido.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="feature-card dojo-card">
+          <h3 class="dojo-name">Andre Santana</h3>
+          <p class="dojo-instructor">Respons&aacute;vel e sensei: Kyoshi Andr&eacute; Santana</p>
+          <div class="dojo-details">
+            <p class="dojo-detail"><span class="dojo-detail-label">Endere&ccedil;o</span><span class="dojo-detail-value">Rua do Queimado, 635</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">Hor&aacute;rios</span><span class="dojo-detail-value">Segundas, quartas e sextas
+07:30 &agrave;s 08:30
+19:00 &agrave;s 20:00</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">P&uacute;blico</span><span class="dojo-detail-value">Juvenil, Adulto, Misto</span></p>
+          </div>
+          <div class="dojo-actions">
+            <a href="tel:+5521985349105">Telefone</a>
+            <a href="https://www.instagram.com/facerj_aikido_bento_ribeiro/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </article>
+
+        <article class="feature-card dojo-card">
+          <h3 class="dojo-name">AIKIDO FACERJ-Niter&oacute;i</h3>
+          <p class="dojo-instructor">Respons&aacute;vel e sensei: &Eacute;rico Ferreira J&uacute;nior</p>
+          <div class="dojo-details">
+            <p class="dojo-detail"><span class="dojo-detail-label">Endere&ccedil;o</span><span class="dojo-detail-value">Rua Bar&atilde;o do Amazonas, 215</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">Hor&aacute;rios</span><span class="dojo-detail-value">Seg/Qua das 20:20 &agrave;s 22 hrs.</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">P&uacute;blico</span><span class="dojo-detail-value">Adulto, Master, Misto</span></p>
+          </div>
+          <div class="dojo-actions">
+            <a href="tel:+5521996926758">Telefone</a>
+            <a href="https://www.instagram.com/Aikidofacerjniteroi/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </article>
+
+        <article class="feature-card dojo-card">
+          <h3 class="dojo-name">Dojo Xogun</h3>
+          <p class="dojo-instructor">Respons&aacute;vel e sensei: Victor Pomar</p>
+          <div class="dojo-details">
+            <p class="dojo-detail"><span class="dojo-detail-label">Endere&ccedil;o</span><span class="dojo-detail-value">Pra&ccedil;a 8de maio n.111 sobreloja Rocha Miranda</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">Hor&aacute;rios</span><span class="dojo-detail-value">Ter&ccedil;as e quintas &agrave;s 21 horas</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">P&uacute;blico</span><span class="dojo-detail-value">Juvenil, Adulto, Misto</span></p>
+          </div>
+          <div class="dojo-actions">
+            <a href="tel:+5521993112961">Telefone</a>
+            <a href="https://www.instagram.com/dojoxogun/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </article>
+
+        <article class="feature-card dojo-card">
+          <h3 class="dojo-name">DOJO FACERJ RECREIO</h3>
+          <p class="dojo-instructor">Respons&aacute;vel: Marcelo Silva<br>Outro instrutor: Edson Sabino</p>
+          <div class="dojo-details">
+            <p class="dojo-detail"><span class="dojo-detail-label">Endere&ccedil;o</span><span class="dojo-detail-value">Av das Am&eacute;rcias, 16661 Sala 201, Recreio dos Bandeirantes. CEP 22790-703</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">Hor&aacute;rios</span><span class="dojo-detail-value">Seg/Qua 8h &agrave;s 9:30h
+Seg/Qua 10h &agrave;s 11:30h
+Seg/Qua/Sex 17h &agrave;s 18h
+Seg/Qua/Sex 19h &agrave;s 20:30h
+Ter/Qui 9h &agrave;s 10:30h
+Ter/Qui 15h &agrave;s 16:30h
+Ter/Qui 17h &agrave;s 18h</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">P&uacute;blico</span><span class="dojo-detail-value">Juvenil, Adulto, Defesa Pessoal, Misto</span></p>
+          </div>
+          <div class="dojo-actions">
+            <a href="tel:+5521966421608">Telefone</a>
+            <a href="https://www.instagram.com/marcelosenseiaikido/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://caminhodoaikido.com.br/" target="_blank" rel="noopener noreferrer">Site</a>
+          </div>
+        </article>
+
+        <article class="feature-card dojo-card">
+          <h3 class="dojo-name">Facerj IBNEM</h3>
+          <p class="dojo-instructor">Respons&aacute;vel e sensei: Kyoshi Andr&eacute; Santana</p>
+          <div class="dojo-details">
+            <p class="dojo-detail"><span class="dojo-detail-label">Endere&ccedil;o</span><span class="dojo-detail-value">Rua Tapaj&oacute;s, 41, Madureira</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">Hor&aacute;rios</span><span class="dojo-detail-value">S&aacute;bados
+07:00 &agrave;s 09:00</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">P&uacute;blico</span><span class="dojo-detail-value">Infantil, Juvenil, Adulto, Misto</span></p>
+          </div>
+          <div class="dojo-actions">
+            <a href="tel:+5521985349105">Telefone</a>
+          </div>
+        </article>
+
+        <article class="feature-card dojo-card">
+          <h3 class="dojo-name">Centro de treinamento- MBK</h3>
+          <p class="dojo-instructor">Respons&aacute;vel: Nonato<br>Sensei: Alexandre Henrique Corujas</p>
+          <div class="dojo-details">
+            <p class="dojo-detail"><span class="dojo-detail-label">Endere&ccedil;o</span><span class="dojo-detail-value">Av. Meriti, n&deg; 1.475, Vila da Penha</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">Hor&aacute;rios</span><span class="dojo-detail-value">Sextas, das 19:30h &agrave;s 21:30h</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">P&uacute;blico</span><span class="dojo-detail-value">Adulto, Master</span></p>
+          </div>
+          <div class="dojo-actions">
+            <a href="tel:+5521997830544">Telefone</a>
+          </div>
+        </article>
+
+        <article class="feature-card dojo-card">
+          <h3 class="dojo-name">Academia Bet&acirc;nia</h3>
+          <p class="dojo-instructor">Respons&aacute;vel: Mestre Herman<br>Sensei: Victor Pomar<br>Outro instrutor: Senpai Najara Cavalcante</p>
+          <div class="dojo-details">
+            <p class="dojo-detail"><span class="dojo-detail-label">Endere&ccedil;o</span><span class="dojo-detail-value">Estrada Manuel Nogueira de s&aacute;, 320</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">Hor&aacute;rios</span><span class="dojo-detail-value">Seg/Qua das 20:30 &agrave;s 22:00</span></p>
+            <p class="dojo-detail"><span class="dojo-detail-label">P&uacute;blico</span><span class="dojo-detail-value">Juvenil, Adulto, Misto</span></p>
+          </div>
+          <div class="dojo-actions">
+            <a href="tel:+5521959364306">Telefone</a>
+            <a href="https://www.instagram.com/Facerjsulacap/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="section-wrap" id="beneficios" aria-labelledby="beneficios-heading">
       <div class="section-head">
         <span class="section-kicker">Princípios e Fundamentos</span>
@@ -1935,6 +2179,30 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <span>Aula Gratuita</span>
   </a>
 
+  <script>
+    (function () {
+      const modal = document.getElementById('anniversary-modal');
+      const closeButton = document.getElementById('anniversary-modal-close');
+
+      if (!modal || !closeButton) return;
+
+      const closeModal = function () {
+        modal.hidden = true;
+        document.body.classList.remove('modal-open');
+      };
+
+      document.body.classList.add('modal-open');
+      closeButton.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.hidden) closeModal();
+      });
+      closeButton.focus();
+    })();
+  </script>
+
   <!-- Scripts e Leaflet para o mapa -->
   
   <script>
@@ -2143,5 +2411,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
 })();
 
 </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const dojoSection = document.getElementById('onde-treinar');
+      const localSection = document.getElementById('horarios');
+
+      if (dojoSection && localSection) {
+        localSection.insertAdjacentElement('afterend', dojoSection);
+      }
+    });
+  </script>
 </body>
 </html>
