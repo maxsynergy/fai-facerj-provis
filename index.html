@@ -1353,6 +1353,25 @@ svg.leaflet-image-layer.leaflet-interactive path {
       color: #ffffff;
     }
 
+    .reviews-grid {
+      align-items: start;
+    }
+
+    .review-card {
+      overflow: hidden;
+      padding: 0;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .review-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     /* About FACERJ Section */
     .about-section {
       background: #ffffff;
@@ -1562,7 +1581,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      white-space: nowrap;
+      line-height: 1.2;
       transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+    .btn-contact-wa svg {
+      display: block;
+      flex: 0 0 22px;
+    }
+    .btn-contact-wa span {
+      white-space: nowrap;
     }
     .btn-contact-wa:hover {
       background: #20ba5a;
@@ -1749,6 +1777,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
       }
       .anniversary-modal-image {
         max-height: calc(100vh - 96px);
+      }
+      .btn-contact-wa {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 8px;
+        font-size: clamp(0.78rem, 3.6vw, 0.9rem);
       }
     }
 
@@ -2024,6 +2061,26 @@ Ter/Qui 17h &agrave;s 18h</span></p>
             <a href="tel:+5521959364306">Telefone</a>
             <a href="https://www.instagram.com/Facerjsulacap/" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-wrap" id="avaliacoes" aria-labelledby="avaliacoes-heading">
+      <div class="section-head">
+        <span class="section-kicker">Depoimentos</span>
+        <h2 class="section-title" id="avaliacoes-heading">Os Alunos falam</h2>
+        <p class="section-desc">Confira alguns depoimentos de alunos da FACERJ no Google.</p>
+      </div>
+
+      <div class="cards-grid reviews-grid">
+        <article class="review-card">
+          <img src="avalGoogle-Facerj_01.png" alt="Avaliação de aluno da FACERJ no Google">
+        </article>
+        <article class="review-card">
+          <img src="avalGoogle-Facerj_02.png" alt="Avaliação de aluno da FACERJ no Google">
+        </article>
+        <article class="review-card">
+          <img src="avalGoogle-Facerj_03.png" alt="Avaliação de aluno da FACERJ no Google">
         </article>
       </div>
     </section>
@@ -2531,9 +2588,11 @@ Ter/Qui 17h &agrave;s 18h</span></p>
     document.addEventListener('DOMContentLoaded', function () {
       const dojoSection = document.getElementById('onde-treinar');
       const localSection = document.getElementById('horarios');
+      const reviewsSection = document.getElementById('avaliacoes');
 
       if (dojoSection && localSection) {
         localSection.insertAdjacentElement('afterend', dojoSection);
+        if (reviewsSection) dojoSection.insertAdjacentElement('afterend', reviewsSection);
       }
     });
   </script>

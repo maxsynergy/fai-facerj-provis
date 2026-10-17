@@ -1,0 +1,7 @@
+# Vercel Fai-facerj-provis
+
+> Aikido classes in Itaipuaçu, Maricá for teens and adults focusing on self-defense, discipline, and balance.
+
+## Main
+
+- [FACERJ Aikido em Itaipuaçu](https://fai-facerj-provis.vercel.app/): Aulas de Aikido tradicional em Itaipuaçu, Maricá - RJ. Defesa pessoal sem violência, disciplina e equilíbrio para adolescentes a partir de 12 anos, jovens e adultos. Aula
