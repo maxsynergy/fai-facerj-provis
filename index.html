@@ -938,6 +938,81 @@ svg.leaflet-image-layer.leaflet-interactive path {
       color: #ffffff;
     }
 
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 9px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      background: #ffffff;
+      color: var(--night-blue);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .menu-toggle.is-open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .menu-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.is-open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+    @media (max-width: 1050px) {
+      .header-inner {
+        position: relative;
+      }
+      .menu-toggle {
+        display: inline-flex;
+      }
+      .site-header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border-top: 1px solid var(--border);
+        box-shadow: 0 8px 18px rgba(13, 13, 13, 0.12);
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 10px 16px 16px;
+      }
+      .nav-links.is-open {
+        display: flex;
+      }
+      .nav-links li {
+        width: 100%;
+      }
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 4px;
+      }
+      .nav-links .btn-header-cta {
+        justify-content: center;
+        margin-top: 6px;
+      }
+    }
+
     /* Hero */
     .hero-wrap {
       position: relative;
@@ -1614,17 +1689,21 @@ svg.leaflet-image-layer.leaflet-interactive path {
     }
     .anniversary-modal-card {
       position: relative;
-      max-width: min(92vw, 760px);
+      width: 100%;
+      max-width: 760px;
       max-height: calc(100vh - 40px);
       padding: 48px 12px 12px;
       background: #ffffff;
       border: 2px solid var(--gold);
       border-radius: 14px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      box-sizing: border-box;
+      overflow: auto;
     }
     .anniversary-modal-image {
       display: block;
-      width: auto;
+      width: 100%;
+      height: auto;
       max-width: 100%;
       max-height: calc(100vh - 100px);
       object-fit: contain;
@@ -1647,6 +1726,30 @@ svg.leaflet-image-layer.leaflet-interactive path {
     .anniversary-modal-close:hover {
       background: var(--accent);
       color: #ffffff;
+    }
+    @media (max-width: 480px) {
+      .header-inner {
+        height: 64px;
+        padding: 0 12px;
+      }
+      .brand-logo-img {
+        height: 42px;
+        max-width: 130px;
+      }
+      .brand-sub {
+        display: none;
+      }
+      .anniversary-modal {
+        padding: 12px;
+      }
+      .anniversary-modal-card {
+        max-height: calc(100vh - 24px);
+        padding: 48px 8px 8px;
+        border-radius: 10px;
+      }
+      .anniversary-modal-image {
+        max-height: calc(100vh - 96px);
+      }
     }
 
     /* Accessible focus */
@@ -1703,7 +1806,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </a>
 
-      <nav aria-label="Navegação principal">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="primary-navigation" aria-label="Navegação principal">
         <ul class="nav-links">
           <li><a href="#beneficios">O Aikido</a></li>
           <li><a href="#30anos">30 Anos</a></li>
@@ -2427,6 +2536,41 @@ Ter/Qui 17h &agrave;s 18h</span></p>
         localSection.insertAdjacentElement('afterend', dojoSection);
       }
     });
+  </script>
+  <script>
+    (function () {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const header = document.querySelector('.site-header');
+
+      if (!menuToggle || !navLinks || !header) return;
+
+      const closeMenu = function () {
+        navLinks.classList.remove('is-open');
+        menuToggle.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+      };
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = navLinks.classList.toggle('is-open');
+        menuToggle.classList.toggle('is-open', isOpen);
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      });
+
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!header.contains(event.target)) closeMenu();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeMenu();
+      });
+    })();
   </script>
 </body>
 </html>
