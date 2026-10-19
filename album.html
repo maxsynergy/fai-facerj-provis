@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Álbum de fotos | FACERJ Aikido</title>
+  <meta name="description" content="Álbum de fotos e registros históricos da FACERJ Aikido.">
+  <style>
+    :root { color-scheme: light; --blue: #0f2a44; --gold: #c6a85c; --ink: #14202b; --muted: #5d6872; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f2; color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .album-header { padding: 28px 20px 22px; background: var(--blue); color: #fff; }
+    .album-header-inner, .album-main { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .back-link { color: #fff; text-decoration: none; font-weight: 700; }
+    .back-link:hover { color: #ffe29a; }
+    h1 { margin: 34px 0 6px; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1; }
+    .album-header p { margin: 0; color: #cbd8e3; }
+    .album-main { padding: 42px 0 70px; }
+    .viewer { display: block; }
+    .photo-frame { position: relative; min-height: min(62vh, 600px); display: grid; place-items: center; padding: 12px; background: #101b25; border-radius: 12px; box-shadow: 0 14px 38px rgba(15, 42, 68, .2); }
+    .photo-frame img { max-width: 92%; max-height: min(60vh, 560px); width: auto; height: auto; object-fit: contain; }
+    .photo-button { position: absolute; top: 50%; transform: translateY(-50%); z-index: 1; width: 52px; height: 52px; border: 0; border-radius: 50%; background: var(--blue); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+    #previous { left: 18px; }
+    #next { right: 18px; }
+    .photo-button:hover, .photo-button:focus-visible { background: #1f4e8c; }
+    .photo-meta { display: flex; justify-content: space-between; gap: 16px; margin: 16px 0 22px; color: var(--muted); font-weight: 600; }
+    .thumbs { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; }
+    .thumb { aspect-ratio: 1; padding: 0; border: 3px solid transparent; border-radius: 7px; overflow: hidden; background: #dfe3df; cursor: pointer; }
+    .thumb[aria-current="true"] { border-color: var(--gold); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 700px) {
+      .album-header-inner, .album-main { width: min(100% - 28px, 1120px); }
+      .album-main { padding-top: 28px; }
+      .viewer { grid-template-columns: 1fr; }
+      .photo-frame { min-height: 48vh; }
+      .photo-frame img { max-width: 86%; max-height: 44vh; }
+      .photo-button { width: 46px; height: 46px; opacity: .9; }
+      #previous { left: 12px; }
+      #next { right: 12px; }
+      .thumbs { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="album-header">
+    <div class="album-header-inner">
+      <a class="back-link" href="index.html#album-fotos">← Voltar ao site</a>
+      <h1>Álbum de fotos</h1>
+      <p>Registros históricos e momentos da FACERJ Aikido.</p>
+    </div>
+  </header>
+  <main class="album-main">
+    <div class="viewer">
+      <div class="photo-frame">
+        <img id="album-photo" src="album/AikidoFacerj-01.png" alt="Foto 1 do álbum">
+        <button class="photo-button" id="previous" type="button" aria-label="Foto anterior">‹</button>
+        <button class="photo-button" id="next" type="button" aria-label="Próxima foto">›</button>
+      </div>
+    </div>
+    <div class="photo-meta"><span id="photo-title">Memória FACERJ</span><span id="photo-count">1 / 16</span></div>
+    <div class="thumbs" id="thumbnails" aria-label="Selecionar foto"></div>
+  </main>
+  <script>
+    (function () {
+      const totalPhotos = 16;
+      let current = 1;
+      const photo = document.getElementById('album-photo');
+      const count = document.getElementById('photo-count');
+      const thumbs = document.getElementById('thumbnails');
+      const title = document.getElementById('photo-title');
+      const path = (number) => 'album/AikidoFacerj-' + String(number).padStart(2, '0') + '.png';
+
+      for (let number = 1; number <= totalPhotos; number += 1) {
+        const button = document.createElement('button');
+        button.className = 'thumb';
+        button.type = 'button';
+        button.setAttribute('aria-label', 'Abrir foto ' + number);
+        button.innerHTML = '<img src="' + path(number) + '" alt="Miniatura da foto ' + number + '" loading="lazy">';
+        button.addEventListener('click', () => show(number));
+        thumbs.appendChild(button);
+      }
+
+      function show(number) {
+        current = number;
+        photo.src = path(current);
+        photo.alt = 'Foto ' + current + ' do álbum FACERJ Aikido';
+        count.textContent = current + ' / ' + totalPhotos;
+        title.textContent = 'Memória FACERJ · foto ' + current;
+        thumbs.querySelectorAll('.thumb').forEach((button, index) => button.setAttribute('aria-current', String(index + 1 === current)));
+      }
+      function move(step) { show((current - 1 + step + totalPhotos) % totalPhotos + 1); }
+      document.getElementById('previous').addEventListener('click', () => move(-1));
+      document.getElementById('next').addEventListener('click', () => move(1));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') move(-1);
+        if (event.key === 'ArrowRight') move(1);
+      });
+      show(1);
+    }());
+  </script>
+</body>
+</html>

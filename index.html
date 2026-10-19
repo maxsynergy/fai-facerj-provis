@@ -10,7 +10,7 @@
   <meta property="og:description" content="Defesa pessoal sem violência, disciplina e equilíbrio. Aulas regulares às segundas, quartas e sextas. Agende sua aula gratuita.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <link rel="icon" type="image/png" href="Fav-Facerj-Aikido.png">
+  <link rel="icon" type="image/png" href="img/Fav-Facerj-Aikido.png">
 
   <!-- Fontes permitidas e folhas de estilo -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -1028,7 +1028,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: linear-gradient(180deg, rgba(15, 42, 68, 0.88) 0%, rgba(13, 13, 13, 0.82) 100%), url('Aikido_Facerj-Capa.png');
+      background-image: linear-gradient(180deg, rgba(15, 42, 68, 0.88) 0%, rgba(13, 13, 13, 0.82) 100%), url('img/Aikido_Facerj-Capa.png');
       background-size: cover;
       background-position: center 25%;
       background-repeat: no-repeat;
@@ -1672,6 +1672,132 @@ svg.leaflet-image-layer.leaflet-interactive path {
       color: #6a7d91;
     }
 
+    .shirt-promo {
+      padding: 18px 16px 32px;
+    }
+    .shirt-promo-inner {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: minmax(150px, 230px) 1fr;
+      gap: 28px;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid rgba(198, 168, 92, 0.5);
+      border-left: 4px solid var(--gold);
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(15, 42, 68, 0.08);
+    }
+    .shirt-promo-image {
+      width: 100%;
+      max-height: 210px;
+      object-fit: contain;
+    }
+    .shirt-promo-kicker {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gold-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .shirt-promo-title {
+      margin: 0 0 8px;
+      color: var(--night-blue);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      line-height: 1.15;
+    }
+    .shirt-promo-text {
+      margin: 0 0 14px;
+      color: #4f5863;
+    }
+    .shirt-promo-deadline {
+      margin: 0 0 18px;
+      color: var(--night-blue);
+      font-weight: 700;
+    }
+    .shirt-promo-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: #25d366;
+      color: #08260f;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+    .shirt-promo-button:hover { background: #20ba5a; transform: translateY(-2px); }
+    .construction-notice {
+      margin: 4px auto 18px;
+      width: min(1140px, calc(100% - 32px));
+      padding: 16px 20px;
+      text-align: center;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(15, 42, 68, 0.06);
+    }
+    .construction-notice .section-title { margin: 0; font-size: 1.25rem; }
+    @media (max-width: 640px) {
+      .shirt-promo { padding: 10px 16px 26px; }
+      .shirt-promo-inner { grid-template-columns: 1fr; gap: 14px; padding: 20px; }
+      .shirt-promo-image { max-height: 180px; }
+    }
+
+    .album-preview {
+      background: #ffffff;
+      padding: 72px 0 78px;
+      overflow: hidden;
+    }
+    .album-preview .section-wrap { padding-top: 0; padding-bottom: 28px; }
+    .album-preview .section-head { margin-bottom: 0; }
+    .album-preview .section-title { color: var(--night-blue); }
+    .album-preview .section-desc { color: #4f5863; }
+    .album-track-viewport { width: min(1140px, 100%); margin: 0 auto; padding: 0 20px; overflow: hidden; }
+    .album-track { display: flex; gap: 18px; width: max-content; animation: album-scroll 32s linear infinite; }
+    .album-card {
+      display: block;
+      position: relative;
+      width: min(350px, calc((100vw - 76px) / 3));
+      aspect-ratio: 4 / 3;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #e7e9e5;
+      box-shadow: 0 8px 24px rgba(15, 42, 68, 0.14);
+    }
+    .album-card::after {
+      content: "Abrir álbum";
+      position: absolute;
+      right: 14px;
+      bottom: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(9, 25, 41, 0.78);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .album-card:hover::after, .album-card:focus-visible::after { opacity: 1; transform: none; }
+    .album-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+    .album-card:hover img, .album-card:focus-visible img { transform: scale(1.05); }
+    @keyframes album-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
+    @media (max-width: 767px) {
+      .album-preview { padding: 54px 0 60px; }
+      .album-preview .section-wrap { padding-bottom: 22px; }
+      .album-card { width: calc(100vw - 40px); }
+      .album-track { gap: 14px; animation-duration: 26s; }
+    }
+    @media (prefers-reduced-motion: reduce) { .album-track { animation: none; } }
+
     /* Floating WhatsApp Quick Action Button for Mobile */
     .wa-float-btn {
       position: fixed;
@@ -1818,7 +1944,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="anniversary-modal" id="anniversary-modal" role="dialog" aria-modal="true" aria-label="30 anos da FACERJ Aikido">
     <div class="anniversary-modal-card">
       <button type="button" class="anniversary-modal-close" id="anniversary-modal-close" aria-label="Fechar aviso dos 30 anos da FACERJ">Fechar</button>
-      <img class="anniversary-modal-image" src="30 anos de FACERJ Aikido.png" alt="30 anos da FACERJ Aikido">
+      <img class="anniversary-modal-image" src="img/30 anos de FACERJ Aikido.png" alt="30 anos da FACERJ Aikido">
     </div>
   </div>
 
@@ -1835,7 +1961,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="header-inner">
       <a href="#inicio" class="brand-wrap" aria-label="FACERJ Aikido Itaipuaçu - Início">
         <!-- Logotipo Oficial FACERJ -->
-        <img src="LogoFACERJ-1080v.png" alt="FACERJ - Federação de Aikido do Estado do Rio de Janeiro" class="brand-logo-img" onerror="this.onerror=null; this.style.display='none'; document.getElementById('logo-fallback-text').style.display='block';">
+        <img src="img/LogoFACERJ-1080v.png" alt="FACERJ - Federação de Aikido do Estado do Rio de Janeiro" class="brand-logo-img" onerror="this.onerror=null; this.style.display='none'; document.getElementById('logo-fallback-text').style.display='block';">
         <span id="logo-fallback-text" style="display:none; font-weight:800; font-size:1.15rem; color:#1F4E8C; letter-spacing:0.04em;">FACERJ</span>
         <div class="brand-text">
           <span class="brand-title">FACERJ Aikido</span>
@@ -1879,7 +2005,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
           </svg>
-          Unidade Oficial Itaipuaçu • Maricá
+          Unidade SEDE - Itaipuaçu • Maricá
         </div>
 
         <!-- H1 EXATO CONFORME DIRETRIZ -->
@@ -2074,15 +2200,32 @@ Ter/Qui 17h &agrave;s 18h</span></p>
 
       <div class="cards-grid reviews-grid">
         <article class="review-card">
-          <img src="avalGoogle-Facerj_01.png" alt="Avaliação de aluno da FACERJ no Google">
+          <img src="img/avalGoogle-Facerj_01.png" alt="Avaliação de aluno da FACERJ no Google">
         </article>
         <article class="review-card">
-          <img src="avalGoogle-Facerj_02.png" alt="Avaliação de aluno da FACERJ no Google">
+          <img src="img/avalGoogle-Facerj_02.png" alt="Avaliação de aluno da FACERJ no Google">
         </article>
         <article class="review-card">
-          <img src="avalGoogle-Facerj_03.png" alt="Avaliação de aluno da FACERJ no Google">
+          <img src="img/avalGoogle-Facerj_03.png" alt="Avaliação de aluno da FACERJ no Google">
         </article>
       </div>
+    </section>
+
+    <section class="shirt-promo" aria-labelledby="shirt-promo-title">
+      <div class="shirt-promo-inner">
+        <img class="shirt-promo-image" src="img/CamisaFacerj-30anos.png" alt="Camisa comemorativa de 30 anos da FACERJ">
+        <div>
+          <span class="shirt-promo-kicker">Edição comemorativa</span>
+          <h2 class="shirt-promo-title" id="shirt-promo-title">Senseis, alunos e ex-alunos: garanta sua camisa de 30 anos</h2>
+          <p class="shirt-promo-text">Uma lembrança especial para celebrar a história da FACERJ junto com quem faz parte dela.</p>
+          <p class="shirt-promo-deadline">Pedidos até 29/10/2026.</p>
+          <a class="shirt-promo-button" href="https://wa.me/5521997989398?text=Ol%C3%A1!%20Quero%20fazer%20meu%20pedido%20da%20camisa%20comemorativa%20de%2030%20anos%20da%20FACERJ." target="_blank" rel="noopener noreferrer">Pedir pelo WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="construction-notice" id="construction" aria-labelledby="construction-title">
+      <h2 class="section-title" id="construction-title">O novo site está em construção...</h2>
     </section>
 
     <section class="section-wrap" id="beneficios" aria-labelledby="beneficios-heading">
@@ -2318,6 +2461,30 @@ Ter/Qui 17h &agrave;s 18h</span></p>
       </div>
     </section>
   </main>
+
+  <section class="album-preview" id="album-fotos" aria-labelledby="album-preview-title">
+    <div class="section-wrap">
+      <div class="section-head">
+        <span class="section-kicker">Memória FACERJ</span>
+        <h2 class="section-title" id="album-preview-title">Aikido em imagens</h2>
+        <p class="section-desc">Momentos de treino, encontros e história da nossa prática. Clique em uma foto para abrir o álbum completo.</p>
+      </div>
+    </div>
+    <div class="album-track-viewport" aria-label="Prévia animada das fotos do álbum">
+      <div class="album-track">
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-01.png" alt="Registro histórico da FACERJ Aikido" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-02.png" alt="Momento de treino de Aikido" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-03.png" alt="Encontro de praticantes de Aikido" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-04.png" alt="Prática de Aikido na FACERJ" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-05.png" alt="Memória da história do Aikido" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-01.png" alt="Registro histórico da FACERJ Aikido" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-02.png" alt="Momento de treino de Aikido" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-03.png" alt="Encontro de praticantes de Aikido" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-04.png" alt="Prática de Aikido na FACERJ" loading="lazy"></a>
+        <a class="album-card" href="album.html"><img src="album/AikidoFacerj-05.png" alt="Memória da história do Aikido" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
 
   <!-- Rodapé Institucional -->
   <footer class="site-footer">
